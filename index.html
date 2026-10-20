@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For M&M | Happy Women's Day</title>
+    
+    <meta property="og:title" content="A note for M&M ✨">
+    <meta property="og:description" content="Better late than a standard text message.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0A0A0C;
+            color: #F3F4F6;
+        }
+        .serif-text {
+            font-family: 'Playfair Display', serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-purple-500 selection:text-white">
+
+    <header class="max-w-3xl mx-auto px-6 pt-20 text-center">
+        <span class="text-[11px] uppercase tracking-[0.3em] text-purple-400 font-semibold bg-purple-950/40 border border-purple-800/30 px-4 py-1.5 rounded-full">
+            Women's Day • For M&M
+        </span>
+        <h1 class="serif-text text-5xl md:text-6xl font-semibold mt-6 mb-4 tracking-tight leading-tight">
+            Better than a standard     <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-300 to-amber-200">text message.</span>
+        </h1>
+
+    </header>
+
+    <main class="max-w-2xl mx-auto px-6 my-10 w-full">
+        <div class="bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-8 md:p-10 text-center backdrop-blur-sm shadow-2xl">
+            
+            <div id="initialState" class="space-y-6">
+                <p class="text-neutral-300 text-base font-light">
+                    Click below
+                </p>
+                
+                <button id="openBtn" type="button" onclick="revealNote()" class="cursor-pointer px-8 py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-medium rounded-xl transition-all duration-300 shadow-lg shadow-purple-950/50 hover:scale-[1.02] active:scale-95 text-sm tracking-wide">
+                    Open Note ✨
+                </button>
+            </div>
+
+            <div id="secretMessage" class="hidden text-left space-y-6 text-neutral-300">
+                <div class="border-b border-neutral-800 pb-4">
+                    <p class="serif-text text-3xl text-purple-200 italic">Hey M&M,</p>
+                </div>
+                
+                <p class="leading-relaxed font-light text-purple-300 font-medium pt-2">
+                    Chúc mừng ngày 20/10 các chị và các bạn nữ của Math & Melody! 🌸
+                </p>
+                
+                <p class="leading-relaxed font-light text-neutral-300">
+                    Em/Mình là thành viên mới của M&M. Nhân ngày 20/10, chúc các chị và các bạn nữ trong CLB luôn vui vẻ, rạng rỡ và tràn đầy năng lượng.
+                </p>
+
+                <p class="leading-relaxed font-light text-neutral-300">
+                    Cảm ơn mọi người vì đã tạo nên một không khí rất ấm áp cho CLB. Chúc các chị và các bạn luôn xinh đẹp, học tốt và có thật nhiều kỉ niệm đẹp cùng M&M nhé! ✨
+                </p>
+
+                <div class="pt-6 border-t border-neutral-800/80 text-center">
+                    <button id="thankYouBtn" type="button" onclick="triggerThankYou()" class="cursor-pointer w-full sm:w-auto px-8 py-3 bg-neutral-800 hover:bg-neutral-700 text-purple-300 border border-purple-500/30 font-medium rounded-xl transition-all duration-300 text-sm hover:scale-[1.02] active:scale-95">
+                        Tym tym ❤️
+                    </button>
+                    <p id="thankYouAck" class="hidden text-xs text-purple-400 mt-4 italic animate-pulse">
+                        Message received! Hope it made your day brighter.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center py-8 text-[11px] text-neutral-600 tracking-wider">
+        BUILT SPECIFICALLY FOR M&M
+    </footer>
+
+    <script>
+        function revealNote() {
+            document.getElementById('initialState').classList.add('hidden');
+            const note = document.getElementById('secretMessage');
+            note.classList.remove('hidden');
+            note.classList.add('fade-in');
+
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#A855F7', '#EC4899', '#3B82F6']
+            });
+        }
+
+        function triggerThankYou() {
+            const btn = document.getElementById('thankYouBtn');
+            const ack = document.getElementById('thankYouAck');
+
+            btn.innerText = "Good Luck ❤️";
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed', 'bg-neutral-800');
+            btn.classList.remove('hover:bg-neutral-700', 'hover:scale-[1.02]', 'cursor-pointer');
+            
+            ack.classList.remove('hidden');
+            ack.classList.add('fade-in');
+
+            confetti({
+                particleCount: 50,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 }
+            });
+            confetti({
+                particleCount: 50,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 }
+            });
+        }
+    </script>
+    <!-- Thẻ audio ẩn -->
+<audio id="bg-music" loop>
+  <source src="https://pomf2.lain.la/f/n36xvrml.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  document.addEventListener('click', function playAudio() {
+    const audio = document.getElementById('bg-music');
+    audio.play().then(() => {
+            document.removeEventListener('click', playAudio);
+    }).catch(error => {
+    });
+  }, { once: true });
+</script>
+</body>
+</html>
